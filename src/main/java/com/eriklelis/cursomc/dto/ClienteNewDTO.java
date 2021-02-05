@@ -2,20 +2,40 @@ package com.eriklelis.cursomc.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.eriklelis.cursomc.services.validation.ClienteInsert;
+
+@ClienteInsert
 public class ClienteNewDTO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
+	@NotEmpty(message="O nome deve ser preenchido")
+	@Length(min=5,message="O campo nome deve conter no minimo 5 caracteres")
 	private String nome;
+	@NotEmpty(message="O email deve ser preenchido")
+	@Email(message="Email invalido")
 	private String email;
+	
+	@NotEmpty(message="O Cpf ou cnpj deve ser preenchido")
 	private String cpfOuCnpj;
 	private Integer tipo;
 	
+	@NotEmpty(message="O logradouro deve ser preenchido")
 	private String logradouro;
+	
+	@NotEmpty(message="O numero deve ser preenchido")
 	private String numero;
 	private String complemento;
+
 	private String bairro;
+	@NotEmpty(message="O cep deve ser preenchido")
 	private String cep;
 	
+	@NotEmpty(message="O telefone deve ser preenchido")
 	private String telefone1;
 	private String telefone2;
 	private String telefone3;
