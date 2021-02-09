@@ -20,6 +20,9 @@ public class ClienteNewDTO implements Serializable{
 	@Email(message="Email invalido")
 	private String email;
 	
+	@NotEmpty(message="A senha deve ser preenchida")
+	private String senha;
+	
 	@NotEmpty(message="O Cpf ou cnpj deve ser preenchido")
 	private String cpfOuCnpj;
 	private Integer tipo;
@@ -58,6 +61,14 @@ public class ClienteNewDTO implements Serializable{
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
 	}
 
 	public String getCpfOuCnpj() {
