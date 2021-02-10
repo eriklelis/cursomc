@@ -11,8 +11,11 @@ import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Service;
 
 import com.eriklelis.cursomc.domain.Categoria;
+import com.eriklelis.cursomc.domain.enums.Perfil;
 import com.eriklelis.cursomc.dto.CategoriaDTO;
 import com.eriklelis.cursomc.repositories.CategoriaRepository;
+import com.eriklelis.cursomc.security.UserSS;
+import com.eriklelis.cursomc.services.exceptions.AuthorizationException;
 import com.eriklelis.cursomc.services.exceptions.DataIntegrityException;
 import com.eriklelis.cursomc.services.exceptions.ObjectNotFoundException;
 
@@ -22,7 +25,7 @@ public class CategoriaService {
 	private CategoriaRepository repo;
 	
 	public Categoria find(Integer id) {
-		 Optional<Categoria> obj = repo.findById(id);
+		Optional<Categoria> obj = repo.findById(id);
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 		 "Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 	} 
